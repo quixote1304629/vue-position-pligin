@@ -1,0 +1,17 @@
+{
+  "name": "vue-position-plugin",
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "@types/webpack": "^5.28.5",
+    "@vue/compiler-dom": "^3.4.21",
+    "html-webpack-plugin": "^5.6.0",
+    "magic-string": "^0.30.8",
+    "typescript": "^5.4.3",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  }
+}
