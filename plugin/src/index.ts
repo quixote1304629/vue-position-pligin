@@ -23,8 +23,8 @@ class VuePositionPlugin {
     });
 
     // 在emit阶段插入xxx.js文件
-    compiler.hooks.emit.tapAsync('GenerateScriptPlugin', (compilation, callback) => {
-      const myJsContent = 'console.log("Hello from xxx.js!");'; // 你的JS文件内容
+    compiler.hooks.emit.tapPromise('GenerateScriptPlugin', async (compilation) => {
+      const myJsContent = 'console.log("Hello from paper95!");'; // 你的JS文件内容
       compilation.assets['js/xxx.js'] = {
         source: () => myJsContent,
         size: () => myJsContent.length,
@@ -33,14 +33,13 @@ class VuePositionPlugin {
         updateHash: () => null,
         buffer: () => Buffer.from(myJsContent),
       };
-      callback();
     });
 
     // 使用html-webpack-plugin插入<script>标签
     compiler.hooks.compilation.tap('InsertScriptPlugin', (compilation) => {
-      HtmlWebpackPlugin.getHooks(compilation).alterAssetTagGroups.tapAsync(
+      HtmlWebpackPlugin.getHooks(compilation).alterAssetTagGroups.tapPromise(
         'InsertScriptPlugin',
-        (data, callback) => {
+        async (data) => {
           data.headTags.push({
             tagName: 'script',
             voidTag: false,
@@ -49,7 +48,7 @@ class VuePositionPlugin {
               plugin: undefined,
             },
           });
-          callback(null, data);
+          return data;
         },
       );
     });
