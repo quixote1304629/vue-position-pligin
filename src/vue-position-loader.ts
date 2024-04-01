@@ -7,13 +7,6 @@ const DATA_KEY = 'data-v-pos';
 function VuePositionLoader(this: any, source: string) {
   const resourcePath = this.resourcePath;
 
-  // console.log("origincode:", JSON.stringify(source));
-  // console.log(
-  //   "resourcePath:",
-  //   JSON.stringify(this.resourcePath),
-  //   JSON.stringify(this.query)
-  // );
-
   const s = new MagicString(source);
 
   const ast = parse(source, {

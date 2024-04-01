@@ -1,11 +1,3 @@
-/***
-给vue3项目，制作一个webpack5插件
-1.将.vue 文件的内容中所有的 bbb字符串，转换为fffff字符串，将转换后的代码，继续让默认loader执行
-2 .是否可以不使用loader来完成？
-
-console.log("abcd", JSON.stringify(originalReadResource));
- */
-
 import { Compiler } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
@@ -21,7 +13,7 @@ class VuePositionPlugin {
       compilation.hooks.normalModuleLoader.tap('VuePositionPlugin', (loaderContext, module) => {
         if (canAddLoader(module.resource)) {
           module.loaders.push({
-            loader: require.resolve('./VuePositionLoader.js'),
+            loader: require.resolve('./vue-position-loader.js'),
             options: undefined,
             ident: null,
             type: null,
