@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "AMD",
+    "target": "ES2022",
+    "strict": true,
+    "esModuleInterop": true,
+    // 是否生成`.d.ts` 声明文件
+    // "declaration": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": false,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "outFile": "./dist/index.js"
+  },
+  "include": ["src/**/*"]
+}
