@@ -2,7 +2,7 @@ const path = require('path');
 
 const { defineConfig } = require('@vue/cli-service');
 // const VueInspectorPlugin = require('vue-inspector-plugin/webpack').default;
-const VuePositionPlugin = require(path.resolve(__dirname, '../../plugin/dist/index.js')).default;
+const VuePositionPlugin = require('./plugins/index.js').default;
 
 module.exports = defineConfig({
   transpileDependencies: true,

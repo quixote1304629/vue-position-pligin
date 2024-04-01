@@ -44,7 +44,7 @@ class VuePositionPlugin {
           data.headTags.push({
             tagName: 'script',
             voidTag: false,
-            attributes: { defer: true, type: 'text/javascript', src: '/js/xxx.js' },
+            attributes: { defer: true, src: '/js/xxx.js' },
             meta: {
               plugin: undefined,
             },
