@@ -154,10 +154,12 @@ function getComponentLocation(vm: VueInstance): string {
 }
 
 function getElLocation(el: Record<string, any>) {
-  return (el.__vnode?.props?.[`__${options.dataKey}`] || el[`__${options.dataKey}`] || '').replace(
-    options.cwd,
-    '',
-  );
+  return (
+    el.__vnode?.props?.[`__${options.dataKey}`] ||
+    el[`__${options.dataKey}`] ||
+    el.getAttribute(options.dataKey) ||
+    ''
+  ).replace(options.cwd, '');
 }
 
 function getElTitle(el: HTMLElement) {
