@@ -1,4 +1,4 @@
-import { Compiler, DefinePlugin } from 'webpack';
+import { Compiler } from 'webpack';
 import fs from 'fs';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
