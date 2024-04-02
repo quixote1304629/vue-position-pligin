@@ -1,17 +1,19 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
   <HelloWorld msg="Welcome to Your Vue.js App" />
+
+  <div>VUE_INSPECTOR_OPTIONS: {{ VUE_INSPECTOR_OPTIONS }}</div>
 </template>
 
-<script>
-import HelloWorld from "./components/HelloWorld.vue";
+<script setup>
+import { onMounted, ref } from 'vue';
+import HelloWorld from './components/HelloWorld.vue';
 
-export default {
-  name: "App",
-  components: {
-    HelloWorld,
-  },
-};
+const VUE_INSPECTOR_OPTIONS = ref('');
+
+onMounted(() => {
+  VUE_INSPECTOR_OPTIONS.value = process.env.__VUE_INSPECTOR_OPTIONS__;
+});
 </script>
 
 <style>

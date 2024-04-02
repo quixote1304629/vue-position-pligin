@@ -1,11 +1,19 @@
-import { Compiler } from 'webpack';
+import { Compiler, DefinePlugin } from 'webpack';
+import fs from 'fs';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import path from 'path';
 
 const canAddLoader = (moduleResource: string) => {
   const url = new URL(moduleResource, 'file://');
   const query = Object.fromEntries(url.searchParams.entries());
   return url.pathname.endsWith('.vue') && query.type === 'template' && !query.raw;
 };
+
+const __VUE_INSPECTOR_OPTIONS__ = JSON.stringify({
+  cwd: process.cwd().replace(/\\/g, '/'),
+  modifierKey: 'ctrl|meta',
+  dataKey: 'data-v-pos',
+});
 
 class VuePositionPlugin {
   apply(compiler: Compiler) {
@@ -22,16 +30,26 @@ class VuePositionPlugin {
       });
     });
 
-    // 在emit阶段插入xxx.js文件
+    // 在emit阶段插入ui js文件
     compiler.hooks.emit.tapPromise('GenerateScriptPlugin', async (compilation) => {
-      const myJsContent = 'console.log("Hello from paper95!");'; // 你的JS文件内容
-      compilation.assets['js/xxx.js'] = {
-        source: () => myJsContent,
-        size: () => myJsContent.length,
+      const jsContent = fs.readFileSync(path.join(__dirname, './vue-position-ui.js')).toString();
+
+      const processEnv = {
+        ...process.env,
+        __VUE_INSPECTOR_OPTIONS__,
+      };
+
+      const replacedJsContent = jsContent.replace(/\bprocess\.env\.(\w+)\b/g, (match, p1) =>
+        processEnv[p1] ? "'" + `${processEnv[p1]}` + "'" : match,
+      );
+
+      compilation.assets['js/vue-position-ui.js'] = {
+        source: () => replacedJsContent,
+        size: () => replacedJsContent.length,
         map: () => null,
-        sourceAndMap: () => ({ source: myJsContent, map: {} }),
+        sourceAndMap: () => ({ source: replacedJsContent, map: {} }),
         updateHash: () => null,
-        buffer: () => Buffer.from(myJsContent),
+        buffer: () => Buffer.from(replacedJsContent),
       };
     });
 
@@ -43,7 +61,7 @@ class VuePositionPlugin {
           data.headTags.push({
             tagName: 'script',
             voidTag: false,
-            attributes: { defer: true, src: '/js/xxx.js' },
+            attributes: { defer: true, src: '/js/vue-position-ui.js' },
             meta: {
               plugin: undefined,
             },

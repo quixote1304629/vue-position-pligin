@@ -1,12 +1,13 @@
 {
   "name": "vue-position-ui",
   "scripts": {
-    "build": "rm -rf dist && tsc -p tsconfig.json"
+    "build": "rm -rf dist && tsup"
   },
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.12.2",
     "lit": "^3.1.2",
+    "tsup": "^8.0.2",
     "typescript": "^5.4.3"
   }
 }

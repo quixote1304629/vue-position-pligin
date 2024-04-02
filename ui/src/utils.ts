@@ -1,8 +1,10 @@
-const options = {
-  cwd: process.cwd().replace(/\\/g, '/'),
-  modifierKey: 'ctrl|meta',
-  dataKey: 'data-v-pos',
-};
+interface RuntimeOptions {
+  cwd: string;
+  modifierKey: string;
+  dataKey: string;
+}
+
+const options = JSON.parse(process.env.__VUE_INSPECTOR_OPTIONS__!) as RuntimeOptions;
 
 const SUPPORTED_MODIFIER_KEYS = ['shift', 'ctrl', 'alt', 'meta'];
 
