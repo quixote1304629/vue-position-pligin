@@ -1,8 +1,7 @@
 {
   "name": "vue-position-plugin",
   "scripts": {
-    "move-ui": "cp ../ui/dist/index.js dist/vue-position-ui.js",
-    "build": "rm -rf dist && mkdir dist && npm run move-ui && tsc -p tsconfig.json"
+    "build": "rm -rf dist && tsc -p tsconfig.json"
   },
   "license": "MIT",
   "devDependencies": {
