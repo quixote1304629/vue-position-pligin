@@ -1,6 +1,10 @@
 {
   "name": "vue-position",
   "version": "1.0.0",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "description": "",
   "workspaces": [
     "plugin",
@@ -11,5 +15,9 @@
     "postbuild": "rm -rf dist && mkdir dist && cp ui/dist/index.js dist/vue-position-ui.js && cp -r plugin/dist/* dist/"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "peerDependencies": {
+    "webpack": "^5.1.0",
+    "html-webpack-plugin": "^5.1.0"
+  }
 }
