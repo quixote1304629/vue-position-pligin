@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
+    "target": "ES2020",
     "module": "ESNext",
-    "target": "ESNext",
     "strict": true,
     "esModuleInterop": true,
     // 是否生成`.d.ts` 声明文件
@@ -12,5 +12,6 @@
     "moduleResolution": "node",
     "experimentalDecorators": true
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*"],
+  "exclude": ["dist"]
 }
