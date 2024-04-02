@@ -1,5 +1,5 @@
 {
-  "name": "vue-position-plugin",
+  "name": "@c10h15n/vue-position-plugin",
   "version": "1.0.0",
   "main": "dist/index.js",
   "files": [
