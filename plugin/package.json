@@ -1,10 +1,16 @@
 {
-  "name": "vue-position-plugin",
+  "name": "@c10h15n/vue-position-plugin",
+  "version": "1.0.1",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "author": "uploaded@foxmail.com",
+  "license": "MIT",
   "scripts": {
     "prebuild": "rm -rf dist && mkdir dist && cp ../ui/dist/index.js dist/vue-position-ui.js",
     "build": "tsc -p tsconfig.json"
   },
-  "license": "MIT",
   "peerDependencies": {
     "webpack": "^5.1.0",
     "html-webpack-plugin": "^5.1.0"
