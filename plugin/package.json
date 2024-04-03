@@ -1,9 +1,14 @@
 {
   "name": "vue-position-plugin",
   "scripts": {
-    "build": "rm -rf dist && tsc -p tsconfig.json"
+    "prebuild": "rm -rf dist && mkdir dist && cp ../ui/dist/index.js dist/vue-position-ui.js",
+    "build": "tsc -p tsconfig.json"
   },
   "license": "MIT",
+  "peerDependencies": {
+    "webpack": "^5.1.0",
+    "html-webpack-plugin": "^5.1.0"
+  },
   "devDependencies": {
     "@types/node": "^20.11.30",
     "@types/webpack": "^5.28.5",

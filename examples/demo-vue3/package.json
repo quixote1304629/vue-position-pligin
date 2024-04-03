@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "preserve": "rm -rf position-plugin && mkdir position-plugin && cp -r ../../dist/* position-plugin/",
+    "preserve": "rm -rf position-plugin && mkdir position-plugin && cp -r ../../plugin/dist/* position-plugin/",
     "serve": "vue-cli-service serve",
     "serve-log": "script -q serve-log.txt npm run serve",
     "build": "vue-cli-service build",
